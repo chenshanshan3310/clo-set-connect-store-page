@@ -1,0 +1,32 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { togglePricingOption } from '../../redux/slices/filterSlice';
+import './ContentFilter.css';
+
+const ContentFilter = () => {
+  const dispatch = useDispatch();
+  const { pricingOptions } = useSelector(state => state.filters);
+  
+  const handleOptionChange = (option) => {
+    dispatch(togglePricingOption(option));
+  };
+  
+  return (
+    <div className="pricing-filter">
+      <div className='filter-title'>Pricing Options</div>
+      <div className="filter-options">
+        {['Paid', 'Free', 'View Only'].map(option => (
+          <label key={option} className="filter-option">
+            <input
+              type="checkbox"
+              checked={pricingOptions[option]}
+              onChange={() => handleOptionChange(option)}
+            />
+            {option}
+          </label>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ContentFilter;

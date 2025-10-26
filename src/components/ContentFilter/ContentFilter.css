@@ -1,0 +1,21 @@
+.pricing-filter {
+  padding: 15px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-title {
+    margin-right: 10px;
+}
+
+.filter-options {
+  display: flex;
+  gap: 15px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

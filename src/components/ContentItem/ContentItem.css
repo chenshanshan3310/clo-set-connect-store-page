@@ -1,0 +1,36 @@
+.content-item {
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.content-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content-image img {
+  width: 323px;
+  height: 266px;
+  object-fit: cover;
+}
+
+.content-info {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-name {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.content-title {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.pricing-info {
+  font-size: 18px;
+  font-weight: bold;
+}
