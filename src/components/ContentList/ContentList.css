@@ -26,9 +26,4 @@
   .content-grid {
     grid-template-columns: 1fr;
   }
-  
-  .filter-controls {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }

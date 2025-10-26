@@ -35,6 +35,10 @@
   gap: 20px;
 }
 
+.left-filter {
+  display: flex;
+}
+
 @media (max-width: 480px) {  
   .filter-controls {
     flex-direction: column;

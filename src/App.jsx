@@ -1,18 +1,12 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchAllContents } from './redux/slices/filterSlice';
 import ContentFilter from './components/ContentFilter/ContentFilter';
 import SearchBar from './components/SearchBar/SearchBar';
+import SortDropdown from './components/SortDropdown/SortDropdown';
+import PriceRangeSlider from './components/PriceRangeSlider/PriceRangeSlider';
 import ResetButton from './components/ResetButton/ResetButton';
 import ContentList from './components/ContentList/ContentList';
 import './index.css';
 
 function App() {
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    dispatch(fetchAllContents());
-  }, [dispatch]);
   
   return (
     <div className="app-container">
@@ -23,9 +17,14 @@ function App() {
       <div className="filters-container">
         <SearchBar />
         <div className="filter-controls">
-          <ContentFilter />
+          <div className="left-filter">
+            <ContentFilter />
+            <PriceRangeSlider />
+          </div>
           <ResetButton />
         </div>
+        <SortDropdown />
+        
       </div>
       
       <main className="main-content">
