@@ -9,7 +9,6 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        // 忽略这些 action types 的序列化检查
         ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE']
       }
     })
