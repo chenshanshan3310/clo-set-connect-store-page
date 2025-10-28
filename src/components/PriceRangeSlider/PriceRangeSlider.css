@@ -1,13 +1,33 @@
 .price-range-slider {
   padding: 20px 0;
   width: 200px;
+  margin-left: 20px;
 }
 
 .price-values {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  font-weight: 500;
+  position: relative;
+  width: 100%;
+  height: 20px;
+}
+
+.price-values span {
+  position: absolute;
+  font-size: 14px;
+  color: #666;
+  user-select: none;
+  transform: translateX(-50%); /* 居中对齐 */
+}
+
+.price-values span:first-child {
+  top: 14px;
+  left: -8px;
+  transform: translateX(-100%); /* 居中对齐 */
+}
+
+.price-values span:last-child {
+  top: 14px;
+  right: -8px;
+  transform: translateX(100%);
 }
 
 .slider-container {
@@ -30,20 +50,10 @@
   appearance: none;
   width: 16px;
   height: 16px;
-  background: #4a90e2;
+  background: #fff;
   border-radius: 50%;
   cursor: pointer;
   pointer-events: all;
-}
-
-.slider::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  background: #4a90e2;
-  border-radius: 50%;
-  cursor: pointer;
-  pointer-events: all;
-  border: none;
 }
 
 .slider:disabled {
@@ -55,13 +65,9 @@
   cursor: not-allowed;
 }
 
-.slider:disabled::-moz-range-thumb {
-  cursor: not-allowed;
-}
-
 .slider-track {
   position: absolute;
   height: 4px;
-  background: #4a90e2;
+  background: rgb(13, 115, 125);
   pointer-events: none;
 }

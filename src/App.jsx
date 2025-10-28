@@ -4,6 +4,7 @@ import SortDropdown from './components/SortDropdown/SortDropdown';
 import PriceRangeSlider from './components/PriceRangeSlider/PriceRangeSlider';
 import ResetButton from './components/ResetButton/ResetButton';
 import ContentList from './components/ContentList/ContentList';
+import exampleImage from '../src/assets/connect-desktop-header-bi.svg';
 import './index.css';
 
 function App() {
@@ -11,7 +12,9 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <h1 className="connect-title">Connect</h1>
+        <div className="connect-title">
+          <img src={exampleImage} alt="Example" />
+        </div>
       </header>
       
       <div className="filters-container">
@@ -24,7 +27,6 @@ function App() {
           <ResetButton />
         </div>
         <SortDropdown />
-        
       </div>
       
       <main className="main-content">

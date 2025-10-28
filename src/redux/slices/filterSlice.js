@@ -9,6 +9,23 @@ export const fetchAllContents = createAsyncThunk(
   }
 );
 
+const getInitialPriceRange = () => {
+  const params = new URLSearchParams(window.location.search);
+  const priceRangeParam = params.get('priceRange');
+  
+  if (priceRangeParam) {
+    const [min, max] = priceRangeParam.split('-').map(Number);
+    return { min, max };
+  }
+  
+  return { min: 0, max: 999 };
+};
+
+const getInitialSortBy = () => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('sortBy') || 'Item Name';
+};
+
 const getInitialState = () => {
   const params = new URLSearchParams(window.location.search);
   const pricingOptionsParam = params.get("pricingOptions");
@@ -26,6 +43,7 @@ const getInitialState = () => {
           Free: false,
           "View Only": false,
         },
+    priceRange: getInitialPriceRange(),
   };
 };
 
@@ -38,7 +56,7 @@ const initialState = {
   searchKeyword: "",
   allContents: [],
   filteredContents: [],
-  sortBy: 'Item Name',
+  sortBy: getInitialSortBy(),
   priceRange: {
     min: 0,
     max: 999
@@ -95,14 +113,55 @@ const filterSlice = createSlice({
         "View Only": false,
       };
       state.searchKeyword = "";
+      state.priceRange = {
+        min: 0,
+        max: 999
+      };
+      state.sortBy = 'Item Name';
+      
+      const params = new URLSearchParams(window.location.search);
+      params.delete('search');
+      params.delete('pricingOptions');
+      params.delete('priceRange');
+      params.delete('sortBy');
+      
+      window.history.replaceState(
+        {},
+        '',
+        window.location.pathname
+      );
+      
       state = applyFilters(state);
     },
     setSortBy: (state, action) => {
       state.sortBy = action.payload;
+      const params = new URLSearchParams(window.location.search);
+      if (action.payload !== 'Item Name') {
+        params.set('sortBy', action.payload);
+      } else {
+        params.delete('sortBy');
+      }
+      
+      const newUrl = `${window.location.pathname}${
+        params.toString() ? `?${params.toString()}` : ''
+      }`;
+      window.history.replaceState({}, '', newUrl);
+      
       applyFilters(state);
     },
      setPriceRange: (state, action) => {
       state.priceRange = action.payload;
+      const params = new URLSearchParams(window.location.search);
+      if (action.payload.min !== 0 || action.payload.max !== 999) {
+        params.set('priceRange', `${action.payload.min}-${action.payload.max}`);
+      } else {
+        params.delete('priceRange');
+      }
+      
+      const newUrl = `${window.location.pathname}${
+        params.toString() ? `?${params.toString()}` : ''
+      }`;
+      window.history.replaceState({}, '', newUrl);
       applyFilters(state);
     }
   },

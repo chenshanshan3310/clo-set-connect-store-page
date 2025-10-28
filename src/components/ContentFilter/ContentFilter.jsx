@@ -15,8 +15,9 @@ const ContentFilter = () => {
       <div className='filter-title'>Pricing Options</div>
       <div className="filter-options">
         {['Paid', 'Free', 'View Only'].map(option => (
-          <label key={option} className="filter-option">
+          <label key={option} className="filter-option form-check form-check-inline">
             <input
+              className="form-check-input"
               type="checkbox"
               checked={pricingOptions[option]}
               onChange={() => handleOptionChange(option)}

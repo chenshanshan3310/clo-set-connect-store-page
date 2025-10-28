@@ -84,17 +84,6 @@ const ContentList = () => {
     };
   }, [loadMore]);
   
-  const lastContentElementRef = useCallback(node => {
-    if (loading) return;
-    if (observer.current) observer.current.disconnect();
-    
-    if (node) observer.current.observe(node);
-  }, [loading, hasMore, dispatch]);
-  
-  // if (loading) {
-  //   return <div className="loading">Loading contents...</div>;
-  // }
-  
   if (filteredContents && filteredContents.length === 0) {
     return <div className="no-results">No contents found</div>;
   }
