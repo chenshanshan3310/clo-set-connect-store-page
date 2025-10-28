@@ -214,10 +214,10 @@ function applyFilters(state) {
 
   switch(state.sortBy) {
     case 'Higher Price':
-      result.sort((a, b) => (b.price || 0) - (a.price || 0));
+      result.sort((a, b) => (b.pricingOption === 0 ? b.price : 0 || 0) - (a.pricingOption === 0 ? a.price : 0 || 0));
       break;
     case 'Lower Price':
-      result.sort((a, b) => (a.price || 0) - (b.price || 0));
+      result.sort((a, b) => (a.pricingOption === 0 ? a.price : 0 || 0) - (b.pricingOption === 0 ? b.price : 0 || 0));
       break;
     case 'Item Name':
     default:
