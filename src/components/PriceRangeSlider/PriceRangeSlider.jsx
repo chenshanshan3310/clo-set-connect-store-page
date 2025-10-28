@@ -58,7 +58,10 @@ const PriceRangeSlider = () => {
           disabled={!pricingOptions.Paid}
         />
         <div 
-          className="slider-track"
+          className="slider-track-background"
+        />
+        <div 
+          className={`slider-track ${!pricingOptions.Paid ? 'disabled' : ''}`}
           style={{
             left: `${(localRange.min / 999) * 100}%`,
             right: `${100 - (localRange.max / 999) * 100}%`

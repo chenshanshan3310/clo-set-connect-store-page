@@ -87,20 +87,3 @@
   color: #fff;
   font-weight: 500;
 }
-
-.select-options::-webkit-scrollbar {
-  width: 6px;
-}
-
-.select-options::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.select-options::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 3px;
-}
-
-.select-options::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
