@@ -13,7 +13,11 @@ const ContentFilter = () => {
   return (
     <div className="pricing-filter">
       <div className='filter-title'>Pricing Options</div>
-      <div className="filter-options">
+      <div 
+        className="filter-options"
+        role="group"
+        aria-label="Pricing options"
+      >
         {['Paid', 'Free', 'View Only'].map(option => (
           <label key={option} className="filter-option form-check form-check-inline">
             <input
@@ -21,6 +25,7 @@ const ContentFilter = () => {
               type="checkbox"
               checked={pricingOptions[option]}
               onChange={() => handleOptionChange(option)}
+              aria-label={option}
             />
             {option}
           </label>

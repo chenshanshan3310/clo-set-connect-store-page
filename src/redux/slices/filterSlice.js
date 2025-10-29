@@ -22,11 +22,17 @@ const getInitialPriceRange = () => {
 };
 
 const getInitialSortBy = () => {
+  if (typeof window === 'undefined') {
+    return 'Item Name';
+  }
   const params = new URLSearchParams(window.location.search);
   return params.get('sortBy') || 'Item Name';
 };
 
 const getInitialState = () => {
+  if (typeof window === 'undefined') {
+    return '';
+  }
   const params = new URLSearchParams(window.location.search);
   const pricingOptionsParam = params.get("pricingOptions");
 
@@ -189,7 +195,7 @@ function applyFilters(state) {
     (option) => state.pricingOptions[option]
   );
 
-  let result = state.allContents;
+  let result = state.allContents || [];
   if (selectedOptions.length > 0) {
     result = result.filter((item) =>
       selectedOptions.includes(PricingOptionLabels[item.pricingOption])
@@ -212,6 +218,10 @@ function applyFilters(state) {
     });
   }
 
+  if (!Array.isArray(result)) {
+    result = [];
+  }
+
   switch(state.sortBy) {
     case 'Higher Price':
       result.sort((a, b) => (b.pricingOption === 0 ? b.price : 0 || 0) - (a.pricingOption === 0 ? a.price : 0 || 0));
@@ -221,7 +231,7 @@ function applyFilters(state) {
       break;
     case 'Item Name':
     default:
-      result.sort((a, b) => a.title.localeCompare(b.title));
+      result.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
       break;
   }
 

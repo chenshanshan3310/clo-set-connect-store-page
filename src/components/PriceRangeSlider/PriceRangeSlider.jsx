@@ -43,6 +43,7 @@ const PriceRangeSlider = () => {
           onChange={(e) => handleMinChange(Number(e.target.value))}
           onMouseDown={() => setIsDragging(prev => ({ ...prev, min: true }))}
           onMouseUp={handleMouseUp}
+          onKeyUp={handleMouseUp}
           className="slider slider-min"
           disabled={!pricingOptions.Paid}
         />
@@ -54,6 +55,7 @@ const PriceRangeSlider = () => {
           onChange={(e) => handleMaxChange(Number(e.target.value))}
           onMouseDown={() => setIsDragging(prev => ({ ...prev, max: true }))}
           onMouseUp={handleMouseUp}
+          onKeyUp={handleMouseUp}
           className="slider slider-max"
           disabled={!pricingOptions.Paid}
         />
