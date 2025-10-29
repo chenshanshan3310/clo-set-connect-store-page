@@ -5,6 +5,8 @@ import './ContentFilter.css';
 const ContentFilter = () => {
   const dispatch = useDispatch();
   const { pricingOptions } = useSelector(state => state.filters);
+
+  const PRICING_OPTIONS = ['Paid', 'Free', 'View Only'];
   
   const handleOptionChange = (option) => {
     dispatch(togglePricingOption(option));
@@ -18,7 +20,7 @@ const ContentFilter = () => {
         role="group"
         aria-label="Pricing options"
       >
-        {['Paid', 'Free', 'View Only'].map(option => (
+        {PRICING_OPTIONS.map(option => (
           <label key={option} className="filter-option form-check form-check-inline">
             <input
               className="form-check-input"
