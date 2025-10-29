@@ -8,7 +8,6 @@ import filterReducer, {
   fetchAllContents
 } from './filterSlice';
 
-// 模拟 window.location
 const mockLocation = {
   search: '',
   pathname: '/test'
@@ -19,7 +18,6 @@ Object.defineProperty(window, 'location', {
   writable: true
 });
 
-// 模拟 URLSearchParams
 global.URLSearchParams = class URLSearchParams {
   constructor(init) {
     this.params = new Map();
